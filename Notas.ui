@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.1">
+  <object class="tk.Toplevel" id="mainWindow">
+    <property name="geometry">500x300</property>
+    <property name="resizable">none</property>
+    <property name="title" translatable="yes">Importador de Notas</property>
+    <child>
+      <object class="ttk.Frame" id="fr_main">
+        <property name="height">300</property>
+        <property name="width">500</property>
+        <layout manager="pack">
+          <property name="propagate">False</property>
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="ttk.Frame" id="frame6">
+            <property name="height">50</property>
+            <property name="width">500</property>
+            <layout manager="pack">
+              <property name="fill">x</property>
+              <property name="propagate">False</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="lbl_title">
+                <property name="font">{Calibri} 16 {}</property>
+                <property name="text" translatable="yes">Importador de notas PDF V0.1</property>
+                <layout manager="pack">
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Label" id="lbl_git">
+                <property name="cursor">hand2</property>
+                <property name="font">{calibri} 12 {underline}</property>
+                <property name="foreground">#0000ff</property>
+                <property name="text" translatable="yes">github.com</property>
+                <bind sequence="&lt;1&gt;" handler="lambda e: callback(&quot;http://www.github.com/averaldofh&quot;)" add="" />
+                <layout manager="pack">
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Labelframe" id="fr_singleFile">
+            <property name="height">80</property>
+            <property name="text" translatable="yes">Arquivo Único</property>
+            <property name="width">200</property>
+            <layout manager="pack">
+              <property name="fill">x</property>
+              <property name="propagate">False</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Button" id="btn_fileopen">
+                <property name="command" type="command" cbtype="simple">cmd_filesel</property>
+                <property name="text" translatable="yes">Abrir PDF...</property>
+                <layout manager="pack">
+                  <property name="anchor">n</property>
+                  <property name="propagate">False</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Entry" id="ent_filepath">
+                <property name="text" translatable="yes">Selecione o PDF para exportar o conteúdo para a área de transferência...</property>
+                <layout manager="pack">
+                  <property name="anchor">n</property>
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="ipady">2</property>
+                  <property name="propagate">False</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="btn_procfile">
+                <property name="command" type="command" cbtype="simple">cmd_file</property>
+                <property name="default">disabled</property>
+                <property name="state">disabled</property>
+                <property name="text" translatable="yes">Copiar para área de transferência</property>
+                <layout manager="place">
+                  <property name="anchor">center</property>
+                  <property name="relx">0.5</property>
+                  <property name="rely">0.7</property>
+                  <property name="x">0</property>
+                  <property name="y">0</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Labelframe" id="fr_folder">
+            <property name="height">80</property>
+            <property name="text" translatable="yes">Múltiplos Arquivos</property>
+            <property name="width">200</property>
+            <layout manager="pack">
+              <property name="fill">x</property>
+              <property name="propagate">False</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Button" id="btn_folderSel">
+                <property name="command" type="command" cbtype="simple">cmd_folder</property>
+                <property name="text" translatable="yes">Abrir pasta...</property>
+                <layout manager="pack">
+                  <property name="anchor">n</property>
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Entry" id="ent_folderPath">
+                <property name="font">TkDefaultFont</property>
+                <property name="text" translatable="yes">Selecione a pasta para exportar todas as notas em um arquivo CSV...</property>
+                <layout manager="pack">
+                  <property name="anchor">n</property>
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="ipady">2</property>
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="btn_procFolder">
+                <property name="command" type="command" cbtype="simple">cmd_foldercsv</property>
+                <property name="default">disabled</property>
+                <property name="state">disabled</property>
+                <property name="text" translatable="yes">Gerar CSV</property>
+                <layout manager="place">
+                  <property name="anchor">center</property>
+                  <property name="relx">0.4</property>
+                  <property name="rely">0.70</property>
+                  <property name="x">0</property>
+                  <property name="y">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="btn_opencsv">
+                <property name="command" type="command" cbtype="simple">cmd_opencsv</property>
+                <property name="default">disabled</property>
+                <property name="state">disabled</property>
+                <property name="text" translatable="yes">Abrir CSV</property>
+                <layout manager="place">
+                  <property name="anchor">center</property>
+                  <property name="relx">0.6</property>
+                  <property name="rely">0.7</property>
+                  <property name="x">0</property>
+                  <property name="y">0</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="fr_pb">
+            <property name="height">60</property>
+            <property name="width">480</property>
+            <layout manager="pack">
+              <property name="propagate">False</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Progressbar" id="progressbar1">
+                <property name="orient">horizontal</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Label" id="lbl_counter">
+                <property name="text" translatable="yes">0 / 0</property>
+                <layout manager="pack">
+                  <property name="anchor">center</property>
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="fr_footer">
+            <property name="height">25</property>
+            <property name="width">500</property>
+            <layout manager="pack">
+              <property name="propagate">False</property>
+              <property name="side">bottom</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="lbl_averaldo">
+                <property name="text" translatable="yes">@averaldofh</property>
+                <layout manager="pack">
+                  <property name="anchor">s</property>
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="btn_quit">
+                <property name="command" type="command" cbtype="simple">cmd_close</property>
+                <property name="text" translatable="yes">Sair</property>
+                <layout manager="pack">
+                  <property name="anchor">s</property>
+                  <property name="propagate">True</property>
+                  <property name="side">right</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
